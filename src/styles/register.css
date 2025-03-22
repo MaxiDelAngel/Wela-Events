@@ -95,6 +95,11 @@ body {
     font-size: var(--font-size-s);
 }
 
+.right-column a {
+  color: var(--color-primary);
+  font-size: var(--font-size-s);
+}
+
 .right-column h1 {
   margin-bottom: 20px;
   color: var(--color-primary);
