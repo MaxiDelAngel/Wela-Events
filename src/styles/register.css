@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* Colors */
+  --color-primary: #8820fa;
+  --secondary-color: #ffffff;
+  --third-color: #333;
+  --gradient-color: #2d145c;
+  --extra-color: #121212;
+  --hover-color: #6e1fff;
+
+  /* Font Sizes */
+  --font-size-s: 0.9rem;
+  --font-size-n: 1rem;
+  --font-size-m: 1.12rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.3rem;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Border radius */
+  --border-radius-s: 8px;
+  --border-radius-m: 30px;
+  --border-radius-circle: 50%;
+
+  /* Site max width */
+  --site-max-width: 1300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  margin: 0;
+}
+
+.left-column {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100vh;
+  background: black;
+}
+
+.background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.5);  
+}
+
+.logo-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.logo-container img {
+  width: 600px;
+  margin-bottom: 20px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.right-column p {
+    margin-top: 10px;
+    color: var(--third-color);
+    font-size: var(--font-size-s);
+}
+
+.right-column h1 {
+  margin-bottom: 20px;
+  color: var(--color-primary);
+  font-size: var(--font-size-xxl);
+}
+
+.right-column form {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-container i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--font-size-l);
+  color: var(--third-color);
+}
+
+.checkbox-container {
+    position: relative;
+    margin-bottom: 15px;
+    gap: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.checkbox-container label {
+    color: var(--third-color);
+    font-size: var(--font-size-s);
+    margin-left: 5px;
+}
+
+.right-column form input:not([type="checkbox"]) {
+    padding: 12px 12px 12px 40px;
+    font-size: var(--font-size-n);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-s);
+    width: 100%;
+}
+
+/* Efecto de Color cuando le das click al input */
+.right-column form input:not([type="checkbox"]):focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px var(--color-primary);
+}
+
+.right-column form button {
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: var(--secondary-color);
+  font-size: var(--font-size-n);
+  border: none;
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%
+}
+
+.right-column form p {
+    margin-top: 10px;
+    color: #333;
+    font-size: var(--font-size-s);
+}
+
+.right-column form a {
+    color: var(--color-primary);
+}
+
+.right-column form button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.05);
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+
+  .left-column {
+    height: 50vh;
+  }
+
+  .right-column {
+    height: 50vh;
+  }
+
+  .right-column form {
+    width: 90%;
+  }
+}
