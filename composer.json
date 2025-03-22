@@ -1,5 +1,33 @@
 {
+    "name": "wela/event-management",
+    "description": "Aplicación web para la gestión de eventos, desarrollada con PHP, MySQL, JavaScript, HTML5 y CSS, utilizando la metodología SCRUM.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maximiliano Del Angel Ojeda",
+            "email": "maxdelangel13@hotmail.com",
+            "homepage": "https://www.linkedin.com/in/maximilianodelangelojeda/"
+        },
+        {
+            "name": "Eligio Elizarraraz Molina",
+            "email": "eligio2008@live.com.mx"
+        },
+        {
+            "name": "Luis Flores Cervantes",
+            "email": "luisflcvz01@gmail.com"
+        },
+        {
+            "name": "Omar Ortiz",
+            "email": "omar.ortiz@iest.edu.mx"
+        }
+    ],
     "require": {
         "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Model\\": "./models"
+        }
     }
 }
