@@ -4,8 +4,10 @@
   /* Colors */
   --color-primary: #8820fa;
   --secondary-color: #ffffff;
+  --third-color: #333;
   --gradient-color: #2d145c;
   --extra-color: #121212;
+  --hover-color: #6e1fff;
 
   /* Font Sizes */
   --font-size-s: 0.9rem;
@@ -36,3 +38,15 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+  color: var(--color-primary)
+}
+
