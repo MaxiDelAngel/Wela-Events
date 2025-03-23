@@ -1,7 +1,12 @@
 <?php
-require 'vendor\autoload.php';
-require 'src\libs\Medoo.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../src/libs/Medoo.php';
+use Dotenv\Dotenv;
 use Medoo\Medoo;
+
+// Cargar el archivo .env
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
 
 try {
     $db = new Medoo([
