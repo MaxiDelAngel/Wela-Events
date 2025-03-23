@@ -1,9 +1,8 @@
 <?php
 
-require 'database.php';
-require 'functions.php';
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/src/libs/Medoo.php';
+require __DIR__ . '/database.php';
+require __DIR__ . '/funciones.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 // Conectarnos a la base de datos
 
