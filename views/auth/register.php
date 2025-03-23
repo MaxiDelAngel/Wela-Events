@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/styles/register.css" />
+    <link rel="stylesheet" href="/build/styles/register.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Register Wela</title>
 </head>
 <body>
     <div class="left-column">
         <video class="background-video" autoplay muted loop playsinline>
-            <source src="/src/assets/video_login_register.mp4" type="video/mp4">
+            <source src="/build/assets/video_login_register.mp4" type="video/mp4">
             Tu navegador no soporta videos.
         </video>
         <div class="logo-container">
-            <img src="/src/assets/Logo_Wela_Blanco.svg" alt="Logo Wela">
+            <img src="/build/assets/Logo_Wela_Blanco.svg" alt="Logo Wela">
         </div>
     </div>
     <div class="right-column">
         <h1>Register</h1>
-        <form action="register_process.php" method="post">
+        <form action="" method="post">
             <div class="input-container">
                 <i class='bx bx-user' ></i>
                 <input type="text" name="username" placeholder="Username" required>
