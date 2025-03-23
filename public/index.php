@@ -6,9 +6,13 @@ use Controllers\AuthController;
 use MVC\Router; 
 $router = new Router();
 
+// Main
+$router->get('/', [AuthController::class, 'main']);
+$router->post('/', [AuthController::class, 'main']);
+
 //Iniciar Sesión
-$router->get('/', [AuthController::class, 'login']);
-$router->post('/', [AuthController::class, 'login']);
+$router->get('/login', [AuthController::class, 'login']);
+$router->post('/login', [AuthController::class, 'login']);
 $router->get('/logout', [AuthController::class, 'logout']);
 
 // Recuperar contraseña

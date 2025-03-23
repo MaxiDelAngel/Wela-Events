@@ -31,3 +31,38 @@
   /* Site max width */
   --site-max-width: 1300px;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-color: var(--extra-color);
+  color: var(--secondary-color);
+  text-align: center; 
+}
+
+.contenedor {
+  max-width: var(--site-max-width);
+  padding: 40px;
+  width: 100%;
+}
+
+h1 {
+  font-size: var(--font-size-xxl); 
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: var(--font-size-l); 
+  margin: 10px 0;
+}

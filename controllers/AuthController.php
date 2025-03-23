@@ -5,6 +5,11 @@ namespace Controllers;
 use MVC\Router;
 
 class AuthController {
+
+    public static function main(Router $router) {
+        $router->render('/main');
+    }
+
     public static function login() {
         echo 'Desde el Login';
     }
