@@ -29,4 +29,12 @@ class AuthController {
     public static function register(Router $router) {
         $router->render('auth/register');
     }
+    
+    public static function terms() {
+        echo 'Desde el terms';
+    }
+
+    public static function privacy() {
+        echo 'Desde el privacy';
+    }
 }

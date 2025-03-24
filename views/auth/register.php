@@ -34,11 +34,11 @@
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" name="agree" required>
-                <label for="agree">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                <label for="agree">I agree to the <a href="/Terms-of-Service">Terms of Service</a> and <a href="https://wela.mx/politica-de-privacidad/">Privacy Policy</a></label>
             </div>
             <button type="submit">Registrarse</button>
         </form>
-        <p>Already hava an account? <a href="login.php"> Login</a></p>
+        <p>Already hava an account? <a href="/login"> Login</a></p>
     </div>
 </body>
 </html>
