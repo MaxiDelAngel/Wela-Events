@@ -19,7 +19,7 @@
     </div>
     <div class="right-column">
         <h1>Register</h1>
-        <form action="" method="post">
+        <form action="/register" method="post">
             <div class="input-container">
                 <i class='bx bx-user' ></i>
                 <input type="text" name="username" placeholder="Username" required>
