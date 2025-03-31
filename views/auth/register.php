@@ -18,27 +18,27 @@
         </div>
     </div>
     <div class="right-column">
-        <h1>Register</h1>
+        <h1>Registrarse</h1>
         <form action="/register" method="post">
             <div class="input-container">
                 <i class='bx bx-user' ></i>
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="username" placeholder="Nombre de usuario" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-envelope'></i>
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Correo electrónico" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-lock-alt' ></i>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" name="agree" required>
-                <label for="agree">I agree to the <a href="/Terms-of-Service">Terms of Service</a> and <a href="https://wela.mx/politica-de-privacidad/">Privacy Policy</a></label>
+                <label for="agree">Acepto los <a href="/Terms-of-Service">Términos y Condiciones</a> y <a href="https://wela.mx/politica-de-privacidad/">Política de Privacidad</a>.</label>
             </div>
             <button type="submit">Registrarse</button>
         </form>
-        <p>Already hava an account? <a href="/login"> Login</a></p>
+        <p>Ya tiene una cuenta? <a href="/login"> Iniciar sesión</a></p>
     </div>
 </body>
 </html>
