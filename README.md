@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4] - 2025-03-31
+### Added
+- Implementación de la vista de Login para la autenticación de usuarios.
+- Desarrollo de la vista de Register para la creación de cuentas.
+- Creación y configuración de la base de datos en la nube.
+- Configuración inicial de la conexión entre la base de datos y la aplicación.
+
 ## [0.0.3] - 2025-03-22
 ### Added
 - Implementación de la arquitectura MVC (Modelo-Vista-Controlador) para la organización del código.
