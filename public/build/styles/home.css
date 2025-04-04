@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+:root {
+  /* Colors */
+  --color-primary: #8820fa;
+  --secondary-color: #ffffff;
+  --third-color: #333;
+  --gradient-color: #2d145c;
+  --extra-color: #121212;
+  --hover-color: #6e1fff;
+
+  /* Font Sizes */
+  --font-size-s: 0.9rem;
+  --font-size-n: 1rem;
+  --font-size-m: 1.12rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.3rem;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Border radius */
+  --border-radius-s: 8px;
+  --border-radius-m: 30px;
+  --border-radius-circle: 50%;
+
+  /* Site max width */
+  --site-max-width: 1300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 10% 75% 15%;
+  height: 100vh;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  background-color: var(--color-secondary);
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  width: 100px;
+  object-fit: contain;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-list {
+  display: flex;
+  gap: 30px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.main {
+  background-color: var(--color-primary);
+}
+
+.footer {
+  background-color: var(--color-secondary);
+  padding: 2% 50px;
+}
+
+.footer__divider {
+  border: var(--third-color) solid 1px;
+  opacity: 50%;
+}
+
+.footer__social-media {
+  display: flex;
+  gap: 8px;
+  float: right;
+}
+
+.footer__social-media-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--border-radius-circle);
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footer__social-media-icon i {
+  color: #ffffff;
+}
