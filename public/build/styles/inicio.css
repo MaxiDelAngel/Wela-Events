@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100%;
+  background-color: var(--extra-color);
+  color: var(--secondary-color);
+}
+
+.inicio__contenedor {
+  max-width: var(--site-max-width);
+  padding: 40px;
+  width: 100%;
+}
+
+.inicio__title {
+  font-size: var(--font-size-xxl);
+  margin-bottom: 20px;
+}
+
+.inicio__text {
+  font-size: var(--font-size-l);
+  margin: 10px 0;
+}
