@@ -86,6 +86,11 @@ a {
   color: var(--hover-color);
 }
 
+.main {
+  width: 100%;
+  overflow: auto;
+}
+
 .footer {
   background-color: var(--color-secondary);
   padding: 2% 50px;

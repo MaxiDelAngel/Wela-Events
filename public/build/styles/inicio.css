@@ -1,4 +1,4 @@
-.main {
+.inicio {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,7 @@
   color: var(--secondary-color);
 }
 
-.inicio__contenedor {
+.inicio__container {
   max-width: var(--site-max-width);
   padding: 40px;
   width: 100%;
