@@ -22,11 +22,15 @@
         <form action="/register" method="post">
             <div class="input-container">
                 <i class='bx bx-user' ></i>
-                <input type="text" name="username" placeholder="Nombre de usuario" required>
+                <input type="text" name="nombre" placeholder="Nombre" value="<?php echo s($usuario->nombre) ?>" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-envelope'></i>
-                <input type="email" name="email" placeholder="Correo electrónico" required>
+                <input type="email" name="email" placeholder="Correo electrónico" value="<?php echo s($usuario->email) ?>" required>
+            </div>
+            <div class="input-container">
+                <i class='bx bxs-phone'></i>
+                <input type="tel" name="telefono" placeholder="Teléfono" pattern="[0-9]+" value="<?php echo s($usuario->telefono) ?>" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-lock-alt' ></i>
@@ -42,3 +46,18 @@
     </div>
 </body>
 </html>
+<?php if (!empty($alertas['error'])): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: `
+                <?php foreach($alertas['error'] as $error): ?>
+                    <p><?php echo $error; ?></p>
+                <?php endforeach; ?>
+            `,
+        });
+    });
+</script>
+<?php endif; ?>

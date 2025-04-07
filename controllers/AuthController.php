@@ -2,7 +2,9 @@
 
 namespace Controllers;
 
+use Classes\Email;
 use MVC\Router;
+use Model\Usuario;
 
 class AuthController {
 
@@ -27,7 +29,35 @@ class AuthController {
     }
 
     public static function register(Router $router) {
-        $router->render('auth/register');
+        $usuario = new Usuario();
+
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $usuario->sincronizar($_POST);
+            $alertas = $usuario->validarRegister();
+            
+            if(empty($alertas)){
+                // verificar si el usuario ya existe
+                $resultado = $usuario->usuarioExistente();
+
+                if($resultado->num_rows){
+                    $alertas = Usuario::getAlertas();
+                } else {
+                    // Hashear la contraseña
+                    $usuario->hashPassword();
+                    // Generar un token único
+                    $usuario->crearToken();
+                    // Enviar el email de confirmación
+                    $email = new Email($usuario->nombre, $usuario->email,$usuario->token);
+                }
+            }
+        }
+
+        $router->render('auth/register', [
+            'usuario' => $usuario,
+            'alertas' => $alertas
+        ]);
     }
     
     public static function terms() {
