@@ -28,7 +28,54 @@
         </div>
 
         <div class="events__cards">
-            Contenido de eventos
+            <?php
+                $events = array(
+                    0 => [
+                        "title" => "Título Evento 1",
+                        "image" => "https://www.cetys.mx/educon/wp-content/uploads/2021/09/Conference.jpg",
+                        "date" => "29/05/2025",
+                        "description" => "descripción"
+                    ],
+                    1 => [
+                        "title" => "Título Evento 2",
+                        "image" => "https://www.esneca.com/wp-content/uploads/eventos-sociales.jpg",
+                        "date" => "24/05/2025",
+                        "description" => "descripción"
+                    ],
+                    2 => [
+                        "title" => "Título Evento 3",
+                        "image" => "https://www.marquid.com/wp-content/uploads/2017/06/6197706_orig.jpg",
+                        "date" => "31/05/2025",
+                        "description" => "descripción"
+                    ],
+                    3 => [
+                        "title" => "Título Evento 4",
+                        "image" => "https://elolivar.es/olivar-content/uploads/2022/10/agencia-de-eventos.png",
+                        "date" => "03/06/2025",
+                        "description" => "descripción"
+                    ]
+                );
+
+                foreach ($events as $event)
+                {
+                    echo '
+                        <div class="events__card">
+                            <img class="events__card-image" src="'.$event["image"].'" alt="Imagen Evento">
+                            <div class="events__card-info">
+                                <span class="events__card-date">'.$event["date"].'</span>
+                                <h6 class="events__card-title">'.$event["title"].'</h6>
+                            </div>
+                        </div>
+                    ';
+                }
+            ?>
+            <div class="events__card">
+                <img class="events__card-image" src="https://www.marquid.com/wp-content/uploads/2017/06/6197706_orig.jpg" alt="Imagen Evento">
+                <div class="events__card-info">
+                    <span class="events__card-date">Fecha</span>
+                    <h6 class="events__card-title">Título Título Título Título  Título Título Título Título Título Título</h6>
+                </div>
+            </div>
         </div>
     </div>
 </section>
