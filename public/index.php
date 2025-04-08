@@ -19,6 +19,7 @@ $router->get('/logout', [AuthController::class, 'logout']);
 $router->get('/home', [AuthController::class, 'home']);
 $router->get('/about-us', [AuthController::class, 'home']);
 $router->get('/events', [AuthController::class, 'home']);
+$router->get('/events/{id}', [AuthController::class, 'events']);
 $router->get('/profile', [AuthController::class, 'home']);
 
 // Recuperar contraseña

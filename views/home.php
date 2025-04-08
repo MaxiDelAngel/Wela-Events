@@ -1,5 +1,6 @@
 <?php
-    $_REQUEST["view"] = str_replace("/", "", $_SERVER["REQUEST_URI"]);
+    if (!$_REQUEST)
+        $_REQUEST["view"] = str_replace("/", "", $_SERVER["REQUEST_URI"]);
 ?>
 
 <!DOCTYPE html>

@@ -55,27 +55,26 @@
                         "description" => "descripción"
                     ]
                 );
-
-                foreach ($events as $event)
-                {
-                    echo '
-                        <div class="events__card">
-                            <img class="events__card-image" src="'.$event["image"].'" alt="Imagen Evento">
-                            <div class="events__card-info">
-                                <span class="events__card-date">'.$event["date"].'</span>
-                                <h6 class="events__card-title">'.$event["title"].'</h6>
-                            </div>
-                        </div>
-                    ';
-                }
             ?>
-            <div class="events__card">
-                <img class="events__card-image" src="https://www.marquid.com/wp-content/uploads/2017/06/6197706_orig.jpg" alt="Imagen Evento">
-                <div class="events__card-info">
-                    <span class="events__card-date">Fecha</span>
-                    <h6 class="events__card-title">Título Título Título Título  Título Título Título Título Título Título</h6>
+            <?php foreach ($events as $key => $event): ?>
+                <div class="events__card" id="<?php echo $key; ?>">
+                    <img class="events__card-image" src="<?php echo $event["image"]; ?>" alt="Imagen Evento" />
+                    <div class="events__card-info">
+                        <span class="events__card-date"><?php echo $event["date"]; ?></span>
+                        <h6 class="events__card-title"><?php echo $event["title"]; ?></h6>
+                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
+
+<script>
+    const cards = document.querySelectorAll(".events__card");
+    
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            window.location.href = `/events/${card.id}`;
+        });
+    })
+</script>
