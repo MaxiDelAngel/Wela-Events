@@ -61,7 +61,7 @@
                     <img class="events__card-image" src="<?php echo $event["image"]; ?>" alt="Imagen Evento" />
                     <div class="events__card-info">
                         <span class="events__card-date"><?php echo $event["date"]; ?></span>
-                        <h6 class="events__card-title"><?php echo $event["title"]; ?></h6>
+                        <h3 class="events__card-title"><?php echo $event["title"]; ?></h6>
                     </div>
                 </div>
             <?php endforeach; ?>
