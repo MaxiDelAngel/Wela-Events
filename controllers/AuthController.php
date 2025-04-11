@@ -50,6 +50,8 @@ class AuthController {
                     $usuario->crearToken();
                     // Enviar el email de confirmación
                     $email = new Email($usuario->nombre, $usuario->email,$usuario->token);
+
+                    $email->enviarConfirmacion();
                 }
             }
         }
