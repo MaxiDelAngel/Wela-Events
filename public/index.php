@@ -25,6 +25,9 @@ $router->post('/recuperar', [AuthController::class, 'recuperar']);
 $router->get('/register', [AuthController::class, 'register']);
 $router->post('/register', [AuthController::class, 'register']);
 
+// Confirmar cuenta
+$router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
+
 // Terms of Service and Privacy Policy 
 $router->get('/Terms-of-Service', [AuthController::class, 'terms']);
 //$router->get('/Privacy-Policy', [AuthController::class, 'privacy']);

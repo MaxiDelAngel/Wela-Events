@@ -33,7 +33,6 @@ class AuthController {
 
         $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             $usuario->sincronizar($_POST);
             $alertas = $usuario->validarRegister();
             
@@ -48,7 +47,8 @@ class AuthController {
                     $usuario->hashPassword();
                     // Generar un token único
                     $usuario->crearToken();
-                    // Enviar el email de confirmación
+
+                    //Enviar el email de confirmación
                     $email = new Email($usuario->nombre, $usuario->email,$usuario->token);
 
                     $email->enviarConfirmacion();

@@ -3,12 +3,11 @@
 namespace Model;
 
 use Classes\Email;
-use PHPMailer\PHPMailer\PHPMailer;
 
 class Usuario extends ActiveRecord {
     // Base de datos
     protected static $tabla = 'TBL_WELA_USUARIOS';
-    protected static $columnasDB = ['ID', 'NOMBRE', 'APELLIDO', 'EMAIL', 'TELEFONO', 'PASSWORD', 'TOKEN'];
+    protected static $columnasDB = ['ID', 'NOMBRE', 'APELLIDO', 'EMAIL', 'TELEFONO', 'PASSWORD', 'TOKEN', 'CONFIRMADO'];
 
     // Atributos
     public $id;
@@ -18,6 +17,7 @@ class Usuario extends ActiveRecord {
     public $telefono;
     public $password;
     public $token;
+    public $confirmado;
 
     // Constructor
     public function __construct($args = []) {
@@ -28,6 +28,7 @@ class Usuario extends ActiveRecord {
         $this->telefono = $args['TELEFONO'] ?? '';
         $this->password = $args['PASSWORD'] ?? '';
         $this->token = $args['TOKEN'] ?? null;
+        $this->confirmado = $args['CONFIRMADO'] ?? 0;
     }
 
     // Validaciones
@@ -69,18 +70,6 @@ class Usuario extends ActiveRecord {
     // Crear un token único
     public function crearToken() {
         $this->token = uniqid();
-    }
-
-    // Enviar el email de confirmación
-    public function enviarConfirmacion() {
-        //Crear ek objeto de email
-        $email = new PHPMailer();
-        $email->isSMTP();
-        $email->Host = 'sandbox.smtp.mailtrap.io'; 
-        $email->SMTPAuth = true;
-        $email->Port = 2525;
-        $email->Username = 'f186413080ec70';
-        $email->Password = '****38ec';
     }
 }
 
