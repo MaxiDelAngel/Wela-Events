@@ -27,10 +27,11 @@ $router->post('/register', [AuthController::class, 'register']);
 
 // Confirmar cuenta
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
+$router->get('/mensaje', [AuthController::class, 'mensaje']);
+
 
 // Terms of Service and Privacy Policy 
 $router->get('/Terms-of-Service', [AuthController::class, 'terms']);
-//$router->get('/Privacy-Policy', [AuthController::class, 'privacy']);
 
 // Comprobando Rutas
 $router->comprobarRutas();

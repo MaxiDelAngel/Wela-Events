@@ -12,8 +12,8 @@
         <h1>Iniciar Sesión</h1>
         <form action="/register" method="post">
             <div class="input-container">
-                <i class='bx bx-user' ></i>
-                <input type="text" name="username" placeholder="Nombre de usuario" required>
+                <i class='bx bxs-envelope'></i>
+                <input type="email" name="email" placeholder="Correo electrónico" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-lock-alt' ></i>

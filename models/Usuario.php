@@ -7,7 +7,7 @@ use Classes\Email;
 class Usuario extends ActiveRecord {
     // Base de datos
     protected static $tabla = 'TBL_WELA_USUARIOS';
-    protected static $columnasDB = ['ID', 'NOMBRE', 'APELLIDO', 'EMAIL', 'TELEFONO', 'PASSWORD', 'TOKEN', 'CONFIRMADO'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'telefono', 'password', 'token', 'confirmado'];
 
     // Atributos
     public $id;

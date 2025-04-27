@@ -148,7 +148,6 @@ body {
     width: 100%;
 }
 
-/* Efecto de Color cuando le das click al input */
 .right-column form input:not([type="checkbox"]):focus {
     outline: none;
     border-color: var(--color-primary);
@@ -180,6 +179,13 @@ body {
 .right-column form button:hover {
   background-color: var(--hover-color);
   transform: scale(1.05);
+}
+
+.right-column > .informacion {
+  margin-top: 20px;
+  color: var(--third-color);
+  font-size: var(--font-size-m);
+  text-align: center;
 }
 
 /* --- Responsividad --- */

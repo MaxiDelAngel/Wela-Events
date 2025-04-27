@@ -25,17 +25,23 @@ class Email{
         $email->Username = 'b608dacb897753';
         $email->Password = '19bbb487b17f77';
 
-        $email->setFrom('max@eligio.com');
-        $email->addAddress('max@eligio', 'MaxEligio.com');
+        $email->setFrom('to@example.com');
+        $email->addAddress('from@example.com', 'from@example.com');
         $email->Subject = 'Confirma tu cuenta';
+
+        //Set HTML
+        $email->isHTML(true);
+        $email->CharSet = 'UTF-8';
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong>, has creado tu cuenta en Wela, solo debes confirmarla haciendo click en el siguiente enlace:</p>";
         $contenido .= "<p>Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar cuenta</a></p>";
         $contenido .= "<p>Si no solicitaste esta cuenta, puedes ignorar este mensaje.</p>";
         $contenido .= "</html>";
-
         $email->Body = $contenido;
+
+        //Enviar el email
+        $email->send();
     }
 }
 ?>

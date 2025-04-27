@@ -52,12 +52,49 @@ class AuthController {
                     $email = new Email($usuario->nombre, $usuario->email,$usuario->token);
 
                     $email->enviarConfirmacion();
+
+                    //debuguear($usuario);
+
+                    // Crear el usuario
+                    $resultado = $usuario->guardar();
+                    if($resultado) {
+                        header('Location: /mensaje');
+                    }
                 }
             }
         }
 
         $router->render('auth/register', [
             'usuario' => $usuario,
+            'alertas' => $alertas
+        ]);
+    }
+
+    public static function mensaje(Router $router) {
+        $router->render('auth/mensaje');
+    }
+
+    public static function confirmar(Router $router) {
+        $alertas = [];
+    
+        $token = s($_GET['token']);
+    
+        $usuario = Usuario::where('token', $token);
+    
+        if (empty($usuario)) {
+            Usuario::setAlerta('error', 'Token no válido');
+        } else {
+            $usuario = new Usuario($usuario);
+    
+            $usuario->confirmado = "1";
+            $usuario->token = null;
+            $usuario->guardar();
+            Usuario::setAlerta('exito', 'Cuenta confirmada correctamente');
+        }
+
+        $alertas = Usuario::getAlertas();
+    
+        $router->render('auth/confirmar-cuenta', [
             'alertas' => $alertas
         ]);
     }
