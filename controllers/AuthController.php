@@ -34,7 +34,7 @@ class AuthController {
                         // Redireccionar al usuario
                         if($usuario->rol === 'ADMIN') {
                             $_SESSION['rol'] = 'ADMIN';
-                            $redireccion = '/';
+                            $redireccion = '/paneladmin';
                         } else if($usuario->rol === 'ENCARGADO') {
                             $_SESSION['rol'] = 'ENCARGADO';
                             $redireccion = '/';

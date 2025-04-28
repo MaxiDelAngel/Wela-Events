@@ -22,19 +22,19 @@
         <form action="/register" method="post">
             <div class="input-container">
                 <i class='bx bx-user' ></i>
-                <input type="text" name="NOMBRE" placeholder="Nombre" value="<?php echo s($usuario->nombre) ?>" required>
+                <input type="text" name="nombre" placeholder="Nombre" value="<?php echo s($usuario->nombre) ?>" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-envelope'></i>
-                <input type="email" name="EMAIL" placeholder="Correo electrónico" value="<?php echo s($usuario->email) ?>" required>
+                <input type="email" name="email" placeholder="Correo electrónico" value="<?php echo s($usuario->email) ?>" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-phone'></i>
-                <input type="tel" name="TELEFONO" placeholder="Teléfono" pattern="[0-9]+" value="<?php echo s($usuario->telefono) ?>" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" pattern="[0-9]+" value="<?php echo s($usuario->telefono) ?>" required>
             </div>
             <div class="input-container">
                 <i class='bx bxs-lock-alt' ></i>
-                <input type="password" name="PASSWORD" placeholder="Contraseña" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" name="agree" required>
