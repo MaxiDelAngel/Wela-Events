@@ -13,11 +13,13 @@ $router->get('/', [AuthController::class, 'main']);
 //Iniciar Sesión
 $router->get('/login', [AuthController::class, 'login']);
 $router->post('/login', [AuthController::class, 'login']);
+
 $router->get('/logout', [AuthController::class, 'logout']);
 
 // Recuperar contraseña
 $router->get('/olvide', [AuthController::class, 'olvide']);
 $router->post('/olvide', [AuthController::class, 'olvide']);
+
 $router->get('/recuperar', [AuthController::class, 'recuperar']);
 $router->post('/recuperar', [AuthController::class, 'recuperar']);
 

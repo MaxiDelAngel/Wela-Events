@@ -13,7 +13,52 @@ class AuthController {
     }
 
     public static function login(Router $router) {
-        $router->render('auth/login');
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+
+            $alertas = $auth->validarLogin();
+
+            if(empty($alertas)){
+                $usuario = Usuario::where('email', $auth->email);
+                $usuario = new Usuario($usuario);
+                if($usuario) {
+                    if($usuario->comprobarPassword($auth->password)){
+                        session_start();
+                        $_SESSION['id'] = $usuario->id;
+                        $_SESSION['nombre'] = $usuario->nombre . ' ' . $usuario->apellido;
+                        $_SESSION['email'] = $usuario->email;
+                        $_SESSION['telefono'] = $usuario->telefono;
+                        $_SESSION['login'] = true;
+
+                        // Redireccionar al usuario
+                        if($usuario->rol === 'ADMIN') {
+                            $_SESSION['rol'] = 'ADMIN';
+                            $redireccion = '/';
+                        } else if($usuario->rol === 'ENCARGADO') {
+                            $_SESSION['rol'] = 'ENCARGADO';
+                            $redireccion = '/';
+                        } else {
+                            $_SESSION['rol'] = 'USER';
+                            $redireccion = '/';
+                        }
+
+                        $loginExitoso = true;
+                        Usuario::setAlerta('success', 'Has iniciado sesión correctamente.');
+                    }
+                } else {
+                    Usuario::setAlerta('error', 'El usuario no existe');
+                }
+            }
+        }
+
+        $alertas = Usuario::getAlertas();
+
+        $router->render('auth/login', [
+            'alertas' => $alertas,
+            'loginExitoso' => $loginExitoso,
+            'redireccion' => $redireccion
+        ]);
     }
 
     public static function logout() {
@@ -80,7 +125,6 @@ class AuthController {
         $token = s($_GET['token']);
     
         $usuario = Usuario::where('token', $token);
-    
         if (empty($usuario)) {
             Usuario::setAlerta('error', 'Token no válido');
         } else {
@@ -89,7 +133,7 @@ class AuthController {
             $usuario->confirmado = "1";
             $usuario->token = null;
             $usuario->guardar();
-            Usuario::setAlerta('exito', 'Cuenta confirmada correctamente');
+            Usuario::setAlerta('success', 'Cuenta confirmada correctamente');
         }
 
         $alertas = Usuario::getAlertas();

@@ -10,7 +10,7 @@
 <body>
 <div class="right-column">
         <h1>Iniciar Sesión</h1>
-        <form action="/register" method="post">
+        <form action="/login" method="post">
             <div class="input-container">
                 <i class='bx bxs-envelope'></i>
                 <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -33,6 +33,36 @@
             <img src="/build/assets/Logo_Wela_Blanco.svg" alt="Logo Wela">
         </div>
     </div>
-    
 </body>
 </html>
+<?php if (!empty($alertas['error'])): ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: `
+                <?php foreach($alertas['error'] as $error): ?>
+                    <p><?php echo $error; ?></p>
+                <?php endforeach; ?>
+            `,
+        });
+    });
+</script>
+<?php elseif (!empty($alertas['success'])): ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'success',
+            title: 'Acceso exitoso',
+            text: '<?php echo implode("<br>", $alertas['success']); ?>',
+            timer: 2000,
+            willClose: () => {
+                <?php if(isset($loginExitoso) && $loginExitoso): ?>
+                window.location.href = '<?php echo $redireccion; ?>';
+                <?php endif; ?>
+            }
+        });
+    });
+</script>
+<?php endif; ?>

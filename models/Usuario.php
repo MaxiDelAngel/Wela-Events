@@ -7,7 +7,7 @@ use Classes\Email;
 class Usuario extends ActiveRecord {
     // Base de datos
     protected static $tabla = 'TBL_WELA_USUARIOS';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'telefono', 'password', 'token', 'confirmado'];
+    protected static $columnasDB = ['id', 'nombre', 'apellido', 'email', 'telefono', 'password', 'rol', 'token', 'confirmado'];
 
     // Atributos
     public $id;
@@ -16,23 +16,24 @@ class Usuario extends ActiveRecord {
     public $email;
     public $telefono;
     public $password;
+    public $rol;
     public $token;
     public $confirmado;
 
     // Constructor
     public function __construct($args = []) {
-        $this->id = $args['ID'] ?? null;
-        $this->nombre = $args['NOMBRE'] ?? '';
-        $this->apellido = $args['APELLIDO'] ?? '';
-        $this->email = $args['EMAIL'] ?? '';
-        $this->telefono = $args['TELEFONO'] ?? '';
-        $this->password = $args['PASSWORD'] ?? '';
-        $this->token = $args['TOKEN'] ?? null;
-        $this->confirmado = $args['CONFIRMADO'] ?? 0;
+        $this->id = $args['id'] ?? $args['ID'] ?? null;
+        $this->nombre = $args['nombre'] ?? $args['NOMBRE'] ?? '';
+        $this->apellido = $args['apellido'] ?? $args['APELLIDO'] ?? '';
+        $this->email = $args['email'] ?? $args['EMAIL'] ?? '';
+        $this->telefono = $args['telefono'] ?? $args['TELEFONO'] ?? '';
+        $this->password = $args['password'] ?? $args['PASSWORD'] ?? '';
+        $this->rol = $args['rol'] ?? $args['ROL'] ?? 'USUARIO';
+        $this->token = $args['token'] ?? $args['TOKEN'] ?? null;
+        $this->confirmado = $args['confirmado'] ?? $args['CONFIRMADO'] ?? 0;
     }
 
     // Validaciones
-
     public function validarRegister() {
         if(!$this->nombre) {
             self::$alertas['error'][] = 'El nombre es obligatorio';
@@ -52,6 +53,17 @@ class Usuario extends ActiveRecord {
         return self::$alertas;
     }
 
+    // Validar el login
+    public function validarLogin(){
+        if(!$this->email) {
+            self::$alertas['error'][] = 'El email es obligatorio';
+        }
+        if(!$this->password) {
+            self::$alertas['error'][] = 'La contraseña es obligatoria';
+        }
+        return self::$alertas;
+    }
+    
     // Validar si el usuario ya existe
     public function usuarioExistente() {
         $query = "SELECT * FROM " . self::$tabla . " WHERE EMAIL = '" . $this->email . "' LIMIT 1";
@@ -70,6 +82,18 @@ class Usuario extends ActiveRecord {
     // Crear un token único
     public function crearToken() {
         $this->token = uniqid();
+    }
+
+    public function comprobarPassword($password) {
+        $resultado = password_verify($password, $this->password);
+        
+        if(!$this->confirmado) {
+            self::$alertas['error'][] = 'El usuario no ha sido confirmado';
+        } else if(!$resultado) {
+            self::$alertas['error'][] = 'La contraseña es incorrecta';
+        } else {
+            return true;
+        }
     }
 }
 

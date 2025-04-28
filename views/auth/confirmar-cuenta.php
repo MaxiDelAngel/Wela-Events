@@ -37,7 +37,7 @@
         });
     });
 </script>
-<?php elseif (!empty($alertas['exito'])): ?>
+<?php elseif (!empty($alertas['success'])): ?>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         Swal.fire({
