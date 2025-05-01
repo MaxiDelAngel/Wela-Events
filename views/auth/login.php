@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/build/styles/login.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Login Wela</title>
+    <title>Wela Eventos</title>
 </head>
 <body>
 <div class="right-column">
@@ -21,7 +21,7 @@
             </div>
             <button type="submit">Iniciar Sesión</button>
         </form>
-        <p>Olvidó su contraseña? <a href="/recuperar"> Recuperar Contraseña</a></p> 
+        <p>Olvidó su contraseña? <a href="/olvide"> Recuperar Contraseña</a></p> 
         <p>Todavía no tiene cuenta? <a href="/register"> Registrarse</a></p> 
     </div>
     <div class="left-column">

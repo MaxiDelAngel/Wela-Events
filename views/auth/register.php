@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/build/styles/register.css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Register Wela</title>
+    <title>Wela Eventos</title>
 </head>
 <body>
     <div class="left-column">
@@ -57,6 +57,22 @@
                     <p><?php echo $error; ?></p>
                 <?php endforeach; ?>
             `,
+        });
+    });
+</script>
+<?php elseif (!empty($alertas['success'])): ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Swal.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+            text: '<?php echo implode("<br>", $alertas['success']); ?>',
+            timer: 5000,
+            willClose: () => {
+                <?php if(isset($registroExitoso) && $registroExitoso): ?>
+                window.location.href = '<?php echo $redireccion; ?>';
+                <?php endif; ?>
+            }
         });
     });
 </script>

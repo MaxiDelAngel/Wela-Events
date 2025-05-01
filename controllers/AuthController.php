@@ -65,12 +65,83 @@ class AuthController {
         echo 'Desde el logout';
     }
 
-    public static function olvide() {
-        echo 'Desde el olvide';
+    public static function olvide(Router $router) {
+        $alertas = [];
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $auth = new Usuario($_POST);
+            $auth->validarEmail();
+
+            if(empty($alertas)){
+                $usuario = Usuario::where('email', $auth->email);
+                $usuario = new Usuario($usuario);
+
+                if($usuario && $usuario->confirmado === 1){
+                    $usuario->crearToken();
+                    $usuario->guardar();
+
+                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+                    $email->enviarInstrucciones();
+                    $redireccion = '/login';
+                    $olvideExitoso = true;
+                    Usuario::setAlerta('success', 'Hemos enviado las instrucciones a tu correo electrónico.');
+                }else {
+                    Usuario::setAlerta('error', 'El usuario no existe o no está confirmado');
+                }
+            }
+        }
+
+        $alertas = Usuario::getAlertas();
+
+        $router->render('auth/olvide', [
+            'alertas' => $alertas,
+            'redireccion' => $redireccion,
+            'olvideExitoso' => $olvideExitoso
+        ]);
     }
 
-    public static function recuperar() {
-        echo 'Desde el recuperar';
+    public static function recuperar(Router $router) {
+        $alertas = [];
+        $error = false;
+
+        $token = s($_GET['token']);
+
+        $usuario = Usuario::where('token', $token);
+        $usuario = new Usuario($usuario);
+
+        if (empty($usuario)) {
+            Usuario::setAlerta('error', 'Token no válido');
+            $error = true;
+        } else {
+            if($_SERVER['REQUEST_METHOD']==='POST'){
+                $password = new Usuario($_POST);
+                $alertas = $password->validarPassword();
+
+                if(empty($alertas)){
+                    $usuario->password = null;
+                    $usuario->password = $password->password;
+                    $usuario->hashPassword();
+                    $usuario->token = null;
+                    $resultado = $usuario->guardar();
+                    if($resultado){
+                        Usuario::setAlerta('success', 'La contraseña se ha actualizado correctamente.');
+                        $redireccion = '/login';
+                        $recuperarExitoso = true;
+                    }
+                } else {
+                    Usuario::setAlerta('error', 'La contraseña no es válida');
+                }
+            }
+        }
+
+        $alertas = Usuario::getAlertas();
+
+        $router->render('auth/recuperar', [
+            'alertas' => $alertas,
+            'error' => $error,
+            'recuperarExitoso' => $recuperarExitoso,
+            'redireccion' => $redireccion
+        ]);
     }
 
     public static function register(Router $router) {
@@ -103,15 +174,21 @@ class AuthController {
                     // Crear el usuario
                     $resultado = $usuario->guardar();
                     if($resultado) {
-                        header('Location: /mensaje');
+                        $registroExitoso = true;
+                        $redireccion = '/login';
+                        Usuario::setAlerta('success', 'El registro se ha realizado correctamente, revisa tu correo para confirmar tu cuenta.');
                     }
                 }
             }
+            $alertas = Usuario::getAlertas();
         }
 
         $router->render('auth/register', [
             'usuario' => $usuario,
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'redireccion' => $redireccion,
+            'registroExitoso' => $registroExitoso
+
         ]);
     }
 

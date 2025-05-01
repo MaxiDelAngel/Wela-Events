@@ -89,6 +89,12 @@ body {
   height: 100vh;
 }
 
+.right-column span {
+  font-size: var(--font-size-m);
+  color: var(--third-color);
+  margin-bottom: 20px;
+}
+
 .right-column p {
     margin-top: 10px;
     color: var(--third-color);
