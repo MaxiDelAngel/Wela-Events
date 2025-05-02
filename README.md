@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5] - 2025-05-02
+### Added
+- Implementación del módulo de autenticación.
+- Desarrollo del módulo de gestión de eventos.
+- Creación de la página de inicio y navegación mediante pestañas.
+- Ajustes en la base de datos para optimizar su funcionamiento.
+
 ## [0.0.4] - 2025-03-31
 ### Added
 - Implementación de la vista de Login para la autenticación de usuarios.
