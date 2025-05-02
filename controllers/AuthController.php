@@ -211,12 +211,16 @@ class AuthController {
             $usuario->token = null;
             $usuario->guardar();
             Usuario::setAlerta('success', 'Cuenta confirmada correctamente');
+            $confirmarExitoso = true;
+            $redireccion = '/login';
         }
 
         $alertas = Usuario::getAlertas();
     
         $router->render('auth/confirmar-cuenta', [
-            'alertas' => $alertas
+            'alertas' => $alertas,
+            'confirmarExitoso' => $confirmarExitoso,
+            'redireccion' => $redireccion 
         ]);
     }
     

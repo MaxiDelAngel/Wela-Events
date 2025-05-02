@@ -19,7 +19,6 @@
     </div>
     <div class="right-column">
         <h1>Confirmar Cuenta</h1>
-        <a href="/login"> Iniciar sesión</a>
     </div>
 </body>
 </html>
@@ -38,12 +37,18 @@
     });
 </script>
 <?php elseif (!empty($alertas['success'])): ?>
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function () {
         Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',
-            text: 'Cuenta confirmada correctamente',
+            text: '<?php echo implode("<br>", $alertas['success']); ?>',
+            timer: 2000,
+            willClose: () => {
+                <?php if(isset($confirmarExitoso) && $confirmarExitoso): ?>
+                window.location.href = '<?php echo $redireccion; ?>';
+                <?php endif; ?>
+            }
         });
     });
 </script>
