@@ -231,4 +231,13 @@ class AuthController {
     public static function privacy() {
         echo 'Desde el privacy';
     }
+
+    public static function home(Router $router) {
+        $router->render('/home');
+    }
+
+    public static function events(Router $router, $id) {
+        $_REQUEST["view"] = "event";
+        $router->render('/home');
+    }
 }

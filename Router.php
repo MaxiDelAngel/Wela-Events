@@ -33,17 +33,31 @@ class Router
 
         if ($method === 'GET') {
             $fn = $this->getRoutes[$currentUrl] ?? null;
+            $routes = $this->getRoutes;
         } else {
             $fn = $this->postRoutes[$currentUrl] ?? null;
+            $routes = $this->postRoutes;
         }
 
+        // Funcionalidad para renderizar rutas dinámicas
+        foreach ($routes as $route => $fn) {
+            $pattern = preg_replace("#\{\w+\}#", "([^\/]+)", $route);
 
-        if ( $fn ) {
-            // Call user fn va a llamar una función cuando no sabemos cual sera
-            call_user_func($fn, $this); // This es para pasar argumentos
-        } else {
-            echo "Página No Encontrada o Ruta no válida";
+            if (preg_match("#^$pattern$#", $currentUrl, $matches)) {
+                array_shift($matches);
+                array_unshift($matches, $this);
+                call_user_func_array($fn, $matches);
+                return;
+            }
         }
+        echo "Página No Encontrada o Ruta no válida";
+
+        // if ( $fn ) {
+        //     // Call user fn va a llamar una función cuando no sabemos cual sera
+        //     call_user_func($fn, $this); // This es para pasar argumentos
+        // } else {
+        //     echo "Página No Encontrada o Ruta no válida";
+        // }
     }
 
     public function render($view, $datos = [])

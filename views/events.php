@@ -1,0 +1,80 @@
+<style>
+    @import url("/build/styles/events.css");
+</style>
+
+<section class="events">
+    <div class="events__container">
+        <h1 class="events__title">Busca tus eventos</h1>
+
+        <div class="events__search-bar">
+            <form class="events__form" action="/search" role="search">
+                <div class="events__input-container">
+                    <i class='bx bx-map-pin'></i>
+                    <select class="events__input">
+                        <option value="0" selected>Todo México</option>
+                        <option value="1">Aguascalientes</option>
+                        <option value="2">Tamaulipas</option>
+                    </select>
+                </div>
+                <div class="events__input-container">
+                    <input class="events__input" type="date" />
+                </div>
+                <div class="events__input-container">
+                    <i class='bx bx-search'></i>
+                    <input class="events__input" type="search" />
+                    <button class="events__button" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="events__cards">
+            <?php
+                $events = array(
+                    0 => [
+                        "title" => "Título Evento 1",
+                        "image" => "https://www.cetys.mx/educon/wp-content/uploads/2021/09/Conference.jpg",
+                        "date" => "29/05/2025",
+                        "description" => "descripción"
+                    ],
+                    1 => [
+                        "title" => "Título Evento 2",
+                        "image" => "https://www.esneca.com/wp-content/uploads/eventos-sociales.jpg",
+                        "date" => "24/05/2025",
+                        "description" => "descripción"
+                    ],
+                    2 => [
+                        "title" => "Título Evento 3",
+                        "image" => "https://www.marquid.com/wp-content/uploads/2017/06/6197706_orig.jpg",
+                        "date" => "31/05/2025",
+                        "description" => "descripción"
+                    ],
+                    3 => [
+                        "title" => "Título Evento 4",
+                        "image" => "https://elolivar.es/olivar-content/uploads/2022/10/agencia-de-eventos.png",
+                        "date" => "03/06/2025",
+                        "description" => "descripción"
+                    ]
+                );
+            ?>
+            <?php foreach ($events as $key => $event): ?>
+                <div class="events__card" id="<?php echo $key; ?>">
+                    <img class="events__card-image" src="<?php echo $event["image"]; ?>" alt="Imagen Evento" />
+                    <div class="events__card-info">
+                        <span class="events__card-date"><?php echo $event["date"]; ?></span>
+                        <h3 class="events__card-title"><?php echo $event["title"]; ?></h6>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<script>
+    const cards = document.querySelectorAll(".events__card");
+    
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            window.location.href = `/events/${card.id}`;
+        });
+    })
+</script>
