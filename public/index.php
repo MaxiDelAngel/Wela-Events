@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use Controllers\AuthController;
+use Controllers\AdminController;
 use MVC\Router; 
 $router = new Router();
 
@@ -21,6 +22,7 @@ $router->get('/home', [AuthController::class, 'home']);
 $router->get('/about-us', [AuthController::class, 'home']);
 
 $router->get('/events', [AuthController::class, 'home']);
+
 $router->get('/events/{id}', [AuthController::class, 'events']);
 
 $router->get('/profile', [AuthController::class, 'home']);
@@ -38,11 +40,15 @@ $router->post('/register', [AuthController::class, 'register']);
 
 // Confirmar cuenta
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
-$router->get('/mensaje', [AuthController::class, 'mensaje']);
 
+$router->get('/mensaje', [AuthController::class, 'mensaje']);
 
 // Terms of Service and Privacy Policy 
 $router->get('/Terms-of-Service', [AuthController::class, 'terms']);
+
+// -------------------------- ADMIN --------------------------
+
+$router->get('/paneladmin', [AdminController::class, 'paneladmin']);
 
 // Comprobando Rutas
 $router->comprobarRutas();
